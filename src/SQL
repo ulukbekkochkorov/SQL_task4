@@ -1,0 +1,20 @@
+select * from customer where country = 'Canada';
+select count(*) from orders;
+select max(total_amount) from orders;
+select sum(total_amount) from orders;
+select sum(total_amount) from orders where order_date between '01-01-2014' and '12-31-2014';
+select avg(total_amount) from orders;
+select avg(total_amount), customer_id  from orders, customer group by customer_id order by customer_id;
+select * from customer where country = 'Brazil' or  country = 'Spain';
+select * from orders where order_date between '01-01-2013' and '12-31-2014' and total_amount < 100;
+select * from customer where country = 'Italy' or  country = 'Spain' or  country = 'German' or  country = 'France';
+select country from customer;
+select first_name from customer where first_name like 'Jo%';
+select first_name from customer where first_name like '___a';
+select count(distinct customer), country from customer group by country;
+select count(distinct customer), country from customer group by country order by count(customer) desc;
+select sum(orders.total_amount), count(customer_id), customer_id from orders
+        group by customer_id order by sum(total_amount);
+select sum(orders.total_amount), count(customer_id), customer_id from orders
+        group by customer_id having count(total_amount) > 20;
+select count(city), country from customer group by country;
